@@ -20,8 +20,8 @@ def lex(filecontents):
 				tok = " "
 		elif tok == "\n":
 			tok = ""
-		elif tok == "pReach":
-			tokens.append("pReach")
+		elif tok == "preach":
+			tokens.append("preach")
 			tok = ""
 		elif tok == "\"":
 			if state == 0:
@@ -32,7 +32,7 @@ def lex(filecontents):
 				state = 0;
 				tok = ""
 		elif state == 1:
-			string += char
+			string += tok
 			tok = ""
 	return tokens
 	#print(tokens)
@@ -41,7 +41,7 @@ def parse(toks):
 	i = 0
 	while(i < len(toks)):
 		
-		if toks[i] + " " + toks[i+1][0:6] == "pReach STRING":
+		if toks[i] + " " + toks[i+1][0:6] == "preach STRING":
 			print(toks[i+1][7:])
 			i += 2
 
