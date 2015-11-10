@@ -23,6 +23,9 @@ def lex(filecontents):
 		elif tok == "preach":
 			tokens.append("preach")
 			tok = ""
+        elif tok == "0" or tok == "1" or tok == "2" or tok == "3" or tok == "4" or tok == "5" or tok == "6" or tok == "7" or tok == "8" or tok == "9":
+            print("NUMBER")
+            tok = ""
 		elif tok == "\"":
 			if state == 0:
 				state = 1
