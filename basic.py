@@ -10,6 +10,8 @@ def lex(filecontents):
 	tok = ""
 	state = 0
 	string = ""
+	expr = ""
+	n = 0
 	filecontents = list(filecontents)
 	for char in filecontents:
 		tok += char
@@ -20,11 +22,11 @@ def lex(filecontents):
 				tok = " "
 		elif tok == "\n":
 			tok = ""
-		elif tok == "preach":
+		elif tok.upper() == "PREACH":
 			tokens.append("preach")
 			tok = ""
-		elif tok == "0" or tok == "1" or tok == "2" or tok == "3" or tok == "4" or tok == "5" or tok == "6" or tok == "7" or tok == "8" or tok == "9":
-                        print("NUMBER")
+		elif tok.isdigit():
+                        expr += tok
                         tok = ""
 		elif tok == "\"":
 			if state == 0:
@@ -37,6 +39,8 @@ def lex(filecontents):
 		elif state == 1:
 			string += tok
 			tok = ""
+
+	print(expr)
 	return tokens
 			
 def parse(toks):
