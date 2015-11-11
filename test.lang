@@ -1,2 +1,3 @@
 preach "Hello World"
-93
+preach 93
+preach 93 + 100

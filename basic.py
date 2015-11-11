@@ -83,17 +83,13 @@ def parse(toks):
 	i = 0
 	while(i < len(toks)):
 		# Runs for each recognized term in the list
-		if toks[i] + " " + toks[i+1][0:6] == "preach STRING" or toks[i] + " " + toks[i][0:3] == "preach NUM":# or toks[i] + " " + toks[i][0:4] == "preach EXPR":
-			#elif toks[i+1][0:3] == "NUM":
-			#	print(toks[i+1][4:])
-			#elif toks[i+1][0:4] == "EXPR":
-			#	print(toks[i+1][5:])
-			#i += 2
-			#if toks[i+1][0:6] == "STRING":
-			print(toks[i+1][7:])
-			#elif toks[i+1][0:3] == "NUM":
-			#	print(toks[i+1][4:])
-			print(toks)
+		if toks[i] + " " + toks[i+1][0:6] == "preach STRING" or toks[i] + " " + toks[i+1][0:3] == "preach NUM" or toks[i] + " " + toks[i+1][0:4] == "preach EXPR":
+			if toks[i+1][0:6] == "STRING":
+				print(toks[i+1][7:])
+			elif toks[i+1][0:3] == "NUM":
+				print(toks[i+1][4:])
+			elif toks[i+1][0:4] == "EXPR":
+				print(toks[i+1][5:])
 			i += 2
 			
 
