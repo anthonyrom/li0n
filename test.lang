@@ -1,1 +1,3 @@
-preach 10 + 2 * 4
+preach "This is a string!"
+preach 34 * 2 + 1
+preach 69
