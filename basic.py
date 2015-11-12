@@ -72,8 +72,18 @@ def lex(filecontents):
 			# Runs for each character between quotes
 			string += tok # Adds each char into the string
 			tok = ""
-	print(tokens) # Prints full list of recognized syntax
+	# print(tokens) # Prints full list of recognized syntax - enable for debugging
 	return tokens # Returns full list of recognized syntax
+
+def doPrint(toPrint):
+	if toPrint[0:6] == "STRING":
+		toPrint = toPrint[8:]
+		toPrint = toPrint[:-1]
+	elif toPrint[0:3] == "NUM":
+		toPrint = toPrint[4:]
+	elif toPrint[0:4] == "EXPR":
+		toPrint = toPrint[5:]
+	print(toPrint)
 		
 # Parse function - takes the list of syntax
 # from  lex and applies the defined action.
@@ -89,22 +99,18 @@ def parse(toks):
 			# type it is, which it knows from the first part
 			# of each list item.
 		if toks[i] + " " + toks[i+1][0:6] == "preach STRING" or toks[i] + " " + toks[i+1][0:3] == "preach NUM" or toks[i] + " " + toks[i+1][0:4] == "preach EXPR":
-			# Pretty confusing, this took me a while to get the list stuff right
-			# The reason for starting the print at various locations is that
-			# the first part of each item is the datatype (string, expr, num, etc)
-			# followed by a colon. So you have to start the print after the colon.
 
 			# If it is a string, print the string
 			if toks[i+1][0:6] == "STRING":
-				print(toks[i+1][7:])
+				doPrint(toks[i+1])
 
 			# If it is a number, print the number
 			elif toks[i+1][0:3] == "NUM":
-				print(toks[i+1][4:])
+				doPrint(toks[i+1])
 
 			# If it is an expression, print the expression
 			elif toks[i+1][0:4] == "EXPR":
-				print(toks[i+1][5:])
+				doPrint(toks[i+1])
 			i += 2
 			
 
