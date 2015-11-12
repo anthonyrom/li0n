@@ -75,10 +75,13 @@ def lex(filecontents):
 	# print(tokens) # Prints full list of recognized syntax - enable for debugging
 	return tokens # Returns full list of recognized syntax
 
+# doPrint function - strips datatype from list item
+# This is used in the parse function, check there for more info
 def doPrint(toPrint):
+	# Checks what datatype, and strips appropriate amount of characters
 	if toPrint[0:6] == "STRING":
 		toPrint = toPrint[8:]
-		toPrint = toPrint[:-1]
+		toPrint = toPrint[:-1] # This removes the remaining quote on strings
 	elif toPrint[0:3] == "NUM":
 		toPrint = toPrint[4:]
 	elif toPrint[0:4] == "EXPR":
@@ -99,7 +102,11 @@ def parse(toks):
 			# type it is, which it knows from the first part
 			# of each list item.
 		if toks[i] + " " + toks[i+1][0:6] == "preach STRING" or toks[i] + " " + toks[i+1][0:3] == "preach NUM" or toks[i] + " " + toks[i+1][0:4] == "preach EXPR":
-
+			# -----------------------------------------------
+			# Using doPrint() instead of print() makes new additions here easier.
+			# Just make a new elif in the same format as the below,
+			# and then add the right code in doPrint for the datatype.
+			# -----------------------------------------------
 			# If it is a string, print the string
 			if toks[i+1][0:6] == "STRING":
 				doPrint(toks[i+1])
