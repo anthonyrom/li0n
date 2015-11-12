@@ -86,27 +86,8 @@ def doPrint(toPrint):
 	elif toPrint[0:3] == "NUM":
 		toPrint = toPrint[4:]
 	elif toPrint[0:4] == "EXPR":
-		toPrint = evalExpr(toPrint[5:]) # Check the function below for info
+		toPrint = eval(toPrint[5:]) # Evaluates; PEMDAS.
 	print(toPrint)
-
-# evalExpr function - evaluates EXPR datatypes
-# This will return the result of the mathematical expression
-# evalExpr evaluates left to right, parentheses first, not PEMDAS.
-# For example:
-# 10 + 2 * 4 = 48
-# 10 + (2 * 4) = 18
-def evalExpr(expr):
-	i = len(expr) - 1 # Sets i to length - 1, which is the highest index
-	while i >= 0:
-		# Runs for each character, right to left.
-		if expr[i] == "+" or expr[i] == "-" or expr[i] == "*" or expr[i] == "/":
-			num = ""
-			numStack.append(num)
-			numStack.append(expr[i])
-		else:
-			num += expr[i]
-		i -= 1
-	print(numStack)
 		
 # Parse function - takes the list of syntax
 # from  lex and applies the defined action.
