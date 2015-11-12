@@ -1,6 +1,7 @@
 from sys import * # Allows for command line algorithms, necessary for open_file()
 
 tokens = [] # Things will be stored here after being recognized
+numStack = [] # Numbers stored in this when evaluating expressions
 
 def open_file(filename):
 	data = open(filename, "r").read() # Reads from the file
@@ -75,7 +76,7 @@ def lex(filecontents):
 	# print(tokens) # Prints full list of recognized syntax - enable for debugging
 	return tokens # Returns full list of recognized syntax
 
-# doPrint function - strips datatype from list item
+# doPrint function - Gets list items in printing-ready condition, then prints them.
 # This is used in the parse function, check there for more info
 def doPrint(toPrint):
 	# Checks what datatype, and strips appropriate amount of characters
@@ -85,15 +86,34 @@ def doPrint(toPrint):
 	elif toPrint[0:3] == "NUM":
 		toPrint = toPrint[4:]
 	elif toPrint[0:4] == "EXPR":
-		toPrint = toPrint[5:]
+		toPrint = evalExpr(toPrint[5:]) # Check the function below for info
 	print(toPrint)
+
+# evalExpr function - evaluates EXPR datatypes
+# This will return the result of the mathematical expression
+# evalExpr evaluates left to right, parentheses first, not PEMDAS.
+# For example:
+# 10 + 2 * 4 = 48
+# 10 + (2 * 4) = 18
+def evalExpr(expr):
+	i = len(expr) - 1 # Sets i to length - 1, which is the highest index
+	while i >= 0:
+		# Runs for each character, right to left.
+		if expr[i] == "+" or expr[i] == "-" or expr[i] == "*" or expr[i] == "/":
+			num = ""
+			numStack.append(num)
+			numStack.append(expr[i])
+		else:
+			num += expr[i]
+		i -= 1
+	print(numStack)
 		
 # Parse function - takes the list of syntax
 # from  lex and applies the defined action.
 def parse(toks):
 	i = 0
 	# While loop runs for each term in the list
-	while(i < len(toks)):
+	while i < len(toks):
 
 		# The following confusing if statement will run if it
 			# recognizes any of the terms we defined for it
