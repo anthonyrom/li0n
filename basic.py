@@ -1,6 +1,7 @@
 from sys import * # Allows for command line algorithms, necessary for open_file()
 
 tokens = [] # Things will be stored here after being recognized
+numStack = [] # Numbers stored in this when evaluating expressions
 
 def open_file(filename):
 	data = open(filename, "r").read() # Reads from the file
@@ -52,7 +53,7 @@ def lex(filecontents):
 			# Runs if the tok is a digit
 			expr += tok # Adds digits into the expression
 			tok = ""
-		elif tok == "+":
+		elif tok == "+" or tok == "-" or tok == "*" or tok == "/" or tok == "(" or tok == ")" or tok == "%":
 			# Runs if an operator is present
 			isexpr = 1 # Says it is an expression not just a number
 			expr += tok # Adds any operator sign into expression
@@ -75,7 +76,7 @@ def lex(filecontents):
 	# print(tokens) # Prints full list of recognized syntax - enable for debugging
 	return tokens # Returns full list of recognized syntax
 
-# doPrint function - strips datatype from list item
+# doPrint function - Gets list items in printing-ready condition, then prints them.
 # This is used in the parse function, check there for more info
 def doPrint(toPrint):
 	# Checks what datatype, and strips appropriate amount of characters
@@ -85,7 +86,7 @@ def doPrint(toPrint):
 	elif toPrint[0:3] == "NUM":
 		toPrint = toPrint[4:]
 	elif toPrint[0:4] == "EXPR":
-		toPrint = toPrint[5:]
+		toPrint = eval(toPrint[5:]) # Evaluates; PEMDAS.
 	print(toPrint)
 		
 # Parse function - takes the list of syntax
@@ -93,7 +94,7 @@ def doPrint(toPrint):
 def parse(toks):
 	i = 0
 	# While loop runs for each term in the list
-	while(i < len(toks)):
+	while i < len(toks):
 
 		# The following confusing if statement will run if it
 			# recognizes any of the terms we defined for it
