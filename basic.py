@@ -53,7 +53,7 @@ def lex(filecontents):
 			# Runs if the tok is a digit
 			expr += tok # Adds digits into the expression
 			tok = ""
-		elif tok == "+":
+		elif tok == "+" or tok == "-" or tok == "*" or tok == "/" or tok == "(" or tok == ")" or tok == "%":
 			# Runs if an operator is present
 			isexpr = 1 # Says it is an expression not just a number
 			expr += tok # Adds any operator sign into expression
