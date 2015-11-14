@@ -59,7 +59,7 @@ Anthony Romaniello, Ned Ellis, Davis Rackley, Ethan Goldfarb
 License
 -------
 
-li0n is protected under the MIT License. Read more about this in LICENSE.txt. The MIT License is a permissive license that is short and to the point. It lets you, yes YOU, do anything you want with our code as long as you provide attribution back to us and don’t hold us liable.
+li0n is protected under the MIT License. The MIT License is a permissive license that is short and to the point. It lets you, yes YOU, do anything you want with our code as long as you provide attribution back to us and don’t hold us liable. Read more about this in LICENSE.txt, found in the root directory of our code.
 
 -----------------------------------------------------------
 Coded with &lt;3 by the Lovett Developers Club in Atlanta, GA
