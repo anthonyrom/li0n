@@ -9,6 +9,11 @@ Find us at [http://lovettdevelopers.weebly.com/]("Lovettdevelopers.weebly.com")
 ------------
 Guide
 ------------
+##### The Basics
+So you want to develop with li0n? Cool. Here's how it works. Using li0n requires a language file (in our repo, this is `test.lang`), and the interpreter, written in Python (that's `li0n.py`). Follow the Installation section below to get all that setup, then come back here.
+
+Great! Now that everything is installed, here's how to get started. In the language file, you write your code in li0n. Most syntax is case insensitive, which makes development in li0n quick, easy, and minimal. Unlike some inferior languages, li0n needs no semicolons! Just type your next line of code on a new line, and the Python interpreter will recognize the new line of code. See below for a more comprehensive guide to the language.
+
 ##### Preach:
 Preach is case insensitive. In any of the following examples, replacing 'preach' with 'PREACH' or 'pReAcH' will accomplish the same results.
 
